@@ -49,14 +49,14 @@ namespace AltitudeApi.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> AddUser([FromForm] UserRegisterModel model)
+        public async Task<IActionResult> AddUser([FromBody] UserRegisterModel model)
         {
             await _userService.AddUserAsync(model);
             return Ok("User successfully created.");
         }
 
         [HttpPut("{id:guid}")]
-        public async Task<IActionResult> UpdateUser(Guid id, [FromForm] UserRegisterModel model)
+        public async Task<IActionResult> UpdateUser(Guid id, [FromBody] UserRegisterModel model)
         {
             await _userService.UpdateUserAsync(id, model);
             return NoContent();

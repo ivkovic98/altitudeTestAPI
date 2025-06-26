@@ -31,22 +31,8 @@ namespace Altitude.Bussiness.Service
         {
             User newUser = _mapper.Map<User>(model);
             newUser.PasswordHash = BCrypt.Net.BCrypt.HashPassword(model.Password);
-
-            if (model.ProfileImageUrl != null)
-            {
-                var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images");
-                Directory.CreateDirectory(folderPath);
-
-                var fileName = $"{Guid.NewGuid()}_{model.ProfileImageUrl.FileName}";
-                var fullPath = Path.Combine(folderPath, fileName);
-
-                using (var stream = new FileStream(fullPath, FileMode.Create))
-                {
-                    await model.ProfileImageUrl.CopyToAsync(stream);
-                }
-
-                newUser.ProfileImageUrl = $"/images/{fileName}";
-            }
+            newUser.UserRole = Common.Enums.UserRole.Customer;
+          
 
             await _userRepository.AddAsync(newUser);
         }

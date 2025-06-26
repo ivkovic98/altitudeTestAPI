@@ -123,12 +123,6 @@ app.UseCors(MyAllowSpecificOrigins);
 app.UseAuthentication(); 
 app.UseAuthorization();
 
-app.UseStaticFiles(new StaticFileOptions
-{
-    FileProvider = new PhysicalFileProvider(
-        Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images")),
-    RequestPath = "/api/images"
-});
 
 app.MapControllers();
 
