@@ -57,7 +57,7 @@ ASP.NET Core 8.0 Web API for product management with user authentication, image 
 ```bash
 docker-compose up -d
 ```
-- API will be available at `http://localhost:5000`
+- API will be available at `http://localhost:5000`  
 - Includes SQL Server database automatically
 
 ## Default Admin Credentials
