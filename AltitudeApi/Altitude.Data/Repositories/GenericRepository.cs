@@ -29,6 +29,7 @@ namespace Altitude.Data.Repositories
         {
             var entity = await _dbSet.FindAsync(id);
             _dbSet.Remove(entity);
+            
             await _context.SaveChangesAsync();
         }
 
